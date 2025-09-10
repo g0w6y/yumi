@@ -21,7 +21,7 @@ class Fetch:
                 full_url = urljoin(str(response.url), src)
                 self.js_file_urls.add(full_url)
         except Exception:
-            pass # Ignore domains that fail to resolve or time out
+            pass 
         finally:
             progress.update(task, advance=1)
 
