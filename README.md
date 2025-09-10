@@ -1,5 +1,5 @@
 
-# Yumi
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/a08e9d89-378a-4210-a3f7-494e9104bc2b" />
 
 ![Version](https://img.shields.io/badge/version-0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
