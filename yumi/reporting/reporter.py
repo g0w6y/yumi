@@ -13,13 +13,16 @@ class Reporter:
             json.dump(self.results, f, indent=4)
 
     def print_console_report(self):
+        if not self.results:
+            return
+            
         table = Table(title="Yumi Scan Results")
-        table.add_column("File", style="cyan")
+        table.add_column("File URL", style="cyan", no_wrap=False)
         table.add_column("Rule Name", style="magenta")
         table.add_column("Match", style="green")
         table.add_column("Severity", style="red")
 
         for result in self.results:
-            table.add_row(result["file"], result["name"], result["match"], result["severity"])
+            table.add_row(result["file_url"], result["name"], result["match"], result["severity"])
 
         console.print(table)
