@@ -37,19 +37,20 @@ class Fetch:
             task = progress.add_task("[cyan]Discovering JS...", total=len(self.domains))
             async with httpx.AsyncClient() as client:
                 semaphore = asyncio.Semaphore(self.threads)
-                tasks = []
-                for domain in self.domains:
-                    async def task_wrapper(d):
-                        async with semaphore:
-                            await self._fetch_urls_from_domain(d, client, progress, task)
-                    tasks.append(task_wrapper(domain))
+                
+                async def task_wrapper(domain):
+                    async with semaphore:
+                        await self._fetch_urls_from_domain(domain, client, progress, task)
+
+                tasks = [task_wrapper(domain) for domain in self.domains]
                 await asyncio.gather(*tasks)
         return list(self.js_file_urls)
 
     async def _fetch_content(self, url, client, progress, task, content_map):
         try:
             response = await client.get(url, timeout=15)
-            if "javascript" in response.headers.get("Content-Type", ""):
+        
+            if "javascript" in response.headers.get("Content-Type", "").lower():
                 content_map[url] = response.text
         except Exception:
             pass
@@ -69,11 +70,11 @@ class Fetch:
             task = progress.add_task("[green]Fetching content...", total=len(urls))
             async with httpx.AsyncClient() as client:
                 semaphore = asyncio.Semaphore(self.threads)
-                tasks = []
-                for url in urls:
-                    async def task_wrapper(u):
-                        async with semaphore:
-                            await self._fetch_content(u, client, progress, task, js_content_map)
-                    tasks.append(task_wrapper(u))
+
+                async def task_wrapper(url):
+                    async with semaphore:
+                        await self._fetch_content(url, client, progress, task, js_content_map)
+                
+                tasks = [task_wrapper(url) for url in urls]
                 await asyncio.gather(*tasks)
         return js_content_map
