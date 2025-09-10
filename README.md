@@ -1,7 +1,6 @@
 
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a8c0925f-57dc-4f7c-8e6d-edb7f7b7c5d0" />
 
-
 ![Version](https://img.shields.io/badge/version-0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
