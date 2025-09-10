@@ -5,8 +5,6 @@
 ![Version](https://img.shields.io/badge/version-0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Yumi is a terminal-based JavaScript reconnaissance and P1 bug bounty hunting tool that automatically collects JavaScript files from a domain and its subdomains, scans for sensitive information, and helps bug bounty hunters find critical security vulnerabilities with ease.
-
 ---
 
 ## Features
