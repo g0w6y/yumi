@@ -10,7 +10,7 @@
 
 - Automatic enumeration of subdomains and JavaScript files
 - Bulk download and scanning of JS files for sensitive keys, secrets, and endpoints
-- Detects common P1 bug bounty vulnerabilities such as API keys, tokens, hardcoded passwords, and more
+- Detects vulnerabilities such as API keys, tokens, hardcoded passwords, and more
 - Fancy terminal UI with ASCII art logo and loading animations
 - JSON and console report generation
 - Extensible plugin system for custom scanning rules
