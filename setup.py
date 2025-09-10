@@ -1,21 +1,23 @@
-from setuptools import setup, find_packages
-
 setup(
-    name="yumi",
-    version="0.1",
+    name="yumi-scanner",
+    version="2.0",
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[
-        "requests",
-        "beautifulsoup4",
         "rich",
-        "pyfiglet"
+        "pyfiglet",
+        "httpx[http2]",
+        "beautifulsoup4",
+        "jsbeautifier",
+        "esprima",
+        "pyyaml",
     ],
     entry_points={
         "console_scripts": [
-            "yumi = yumi.cli:main"
+            "yumi = yumi.main:start"
         ],
     },
     author="Davy Cipher",
-    description="Yumi - JS Recon & P1 Bug Hunter",
+    description="Yumi v2 - An intelligent, asynchronous JS Recon Engine",
     url="https://github.com/cypherdavy/yumi"
 )
