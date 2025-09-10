@@ -1,36 +1,42 @@
 import re
 import yaml
-from rich.table import Table
-from rich.console import Console
-
-console = Console()
+import jsbeautifier
+from yumi.config import JSBEAUTIFIER_OPTIONS
 
 class Scanner:
-    def __init__(self, js_files):
-        self.js_files = js_files
+    def __init__(self, js_content_map):
+        self.js_content_map = js_content_map
         self.rules = self.load_rules()
 
     def load_rules(self):
-        with open("rules/secrets.yml", "r") as f:
-            return yaml.safe_load(f)
+        try:
+            with open("rules/secrets.yml", "r") as f:
+                return yaml.safe_load(f)
+        except FileNotFoundError:
+            print("Error: rules/secrets.yml not found.")
+            return []
 
     def scan(self):
         results = []
-        for js_file in self.js_files:
-            try:
-                with httpx.Client() as client:
-                    response = client.get(js_file)
-                    content = response.text
-                    for rule in self.rules:
-                        matches = re.findall(rule["regex"], content)
-                        for match in matches:
-                            results.append({
-                                "file": js_file,
-                                "rule_id": rule["id"],
-                                "name": rule["name"],
-                                "match": match,
-                                "severity": rule["severity"]
-                            })
-            except httpx.RequestError:
-                pass  # Ignore errors for this example
+        for url, content in self.js_content_map.items():
+
+            beautified_content = jsbeautifier.beautify(content, JSBEAUTIFIER_OPTIONS)
+            
+            for rule in self.rules:
+                try:
+                    matches = re.finditer(rule["regex"], beautified_content)
+                    for match in matches:
+                     
+                        secret = match.group(2) if "generic-secret" in rule["id"] and len(match.groups()) > 1 else match.group(0)
+                        
+                        results.append({
+                            "file_url": url,
+                            "rule_id": rule["id"],
+                            "name": rule["name"],
+                            "match": secret,
+                            "severity": rule["severity"]
+                        })
+                except re.error as e:
+                    print(f"Regex error in rule {rule['id']}: {e}")
+                    continue
         return results
