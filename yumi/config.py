@@ -1,1 +1,17 @@
-
+JSBEAUTIFIER_OPTIONS = {
+    "indent_size": 2,
+    "indent_char": " ",
+    "preserve_newlines": True,
+    "max_preserve_newlines": 2,
+    "jslint_happy": False,
+    "space_after_anon_function": False,
+    "brace_style": "collapse",
+    "keep_array_indentation": False,
+    "keep_function_indentation": False,
+    "space_before_conditional": True,
+    "break_chained_methods": False,
+    "eval_code": False,
+    "unescape_strings": False,
+    "wrap_line_length": 0,
+    "end_with_newline": False,
+}
