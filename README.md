@@ -69,7 +69,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Authors and Acknowledgments
 
-- Developed and maintained by David PS Abraham  
+- Developed and maintained by `David PS Abraham ` 
 - Inspired by the needs of the bug bounty community  
 - Thanks to open source projects like `requests`, `rich`, and `pyfiglet`
 
