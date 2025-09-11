@@ -45,20 +45,6 @@ You will see a colorful loading screen, followed by enumeration and scan results
 
 ---
 
-## Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check [issues](https://github.com/yourgithub/yumi/issues) page.
-
-To contribute:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/my-feature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/my-feature`)
-5. Open a pull request
-
----
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
