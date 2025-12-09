@@ -1,7 +1,11 @@
-rich
-pyfiglet
-httpx[http2]
+aiohttp
 beautifulsoup4
-jsbeautifier
 esprima
+httpx[http2]
+jsbeautifier
+pyfiglet
+PySide6
 pyyaml
+requests
+rich
+tldextract
