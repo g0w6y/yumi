@@ -5,6 +5,7 @@ httpx[http2]
 jsbeautifier
 pyfiglet
 PySide6
+PySimpleGUI
 pyyaml
 requests
 rich
